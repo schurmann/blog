@@ -1,12 +1,18 @@
 ---
-import HeaderLink from './HeaderLink.astro';
+import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header class="mb-8">
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://github.com/schurmann/blog" target="_blank">GitHub</HeaderLink>
+	<nav class="flex justify-between">
+		<div>
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/blog">Blog</HeaderLink>
+			<HeaderLink href="/about">About</HeaderLink>
+		</div>
+		<div>
+			<HeaderLink href="https://github.com/schurmann/blog" target="_blank"
+				>GitHub</HeaderLink
+			>
+		</div>
 	</nav>
 </header>
