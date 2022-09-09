@@ -21,16 +21,6 @@ const {
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
-			.title {
-				font-size: 2em;
-				margin: 0.25em 0 0;
-			}
-			hr {
-  				border-top: 1px solid #DDD;
-				margin: 1rem 0;
-			}
-		</style>
 	</head>
 
 	<body>
@@ -45,10 +35,10 @@ const {
 						alt=""
 					/>
 				)}
-				<h1 class="title">{title}</h1>
+				<h1 class="text-4xl my-1">{title}</h1>
 				{pubDate && <time>{pubDate}</time>}
 				{updatedDate && <div>Last updated on <time>{updatedDate}</time></div>}
-				<hr/>
+				<hr class="border-t-2"/>
 				<slot />
 			</article>
 		</main>
