@@ -27,7 +27,7 @@ const posts = await getCollection('blog');
                                 day: 'numeric',
                             })}
                         </time>
-                        <a class="visited:text-purple-600" href={`/posts/${post.slug}`}>{post.data.title}</a>
+                        <a class="visited:text-purple-600" href={`/blog/${post.slug}`}>{post.data.title}</a>
                     </li>
             ))}
         </ul>
