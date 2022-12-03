@@ -3,25 +3,25 @@
 @tailwind utilities;
 
 @layer utilities {
-	body {
-		@apply prose mx-auto leading-6 p-6;
-		font-family: Verdana, sans-serif;
-	}
+    body {
+        @apply prose mx-auto leading-6 p-8;
+        font-family: Verdana, sans-serif;
+    }
 
-	code {
-		padding: 2px 5px;
-		background-color: #f2f2f2;
-	}
+    code {
+        padding: 2px 5px;
+        background-color: #f2f2f2;
+    }
 
-	pre>code {
-		all: unset;
-	}
+    pre > code {
+        all: unset;
+    }
 
-	a {
-		color: #3273dc;
-	}
+    a {
+        color: #3273dc;
+    }
 
-	nav a {
-		margin-right: 10px;
-	}
+    nav a {
+        margin-right: 10px;
+    }
 }
