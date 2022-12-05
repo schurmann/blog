@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: {{ include "spring-demo.fullname" . }}
+spec:
+  selector:
+    istio: istio
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "spring.test"
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: {{ include "spring-demo.fullname" . }}
+spec:
+  hosts:
+    - "spring.test"
+  gateways:
+    - {{ include "spring-demo.fullname" . }}
+  http:
+    - route:
+        - destination:
+            host: {{ include "spring-demo.fullname" . }}
+            port:
+              number: 8080
