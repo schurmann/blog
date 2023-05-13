@@ -1,0 +1,20 @@
+management:
+  health:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - "*"
+  endpoint:
+    health:
+      show-details: always
+      group:
+        readiness:
+          include: readinessState
+
+server:
+  shutdown: GRACEFUL
+
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 20s

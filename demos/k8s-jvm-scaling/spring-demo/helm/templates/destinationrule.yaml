@@ -1,0 +1,12 @@
+{{ if .Values.warmup }}
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: {{ include "spring-demo.name" . }}
+spec:
+  host: {{ include "spring-demo.name" . }}.{{ $.Release.Namespace }}.svc.cluster.local
+  trafficPolicy:
+    loadBalancer:
+      simple: LEAST_REQUEST
+      warmupDurationSecs: 60s
+{{- end }}
