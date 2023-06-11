@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "packageRules": [
+    { // leave major dependency updates to a human
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
+      "automerge": true
+    }
+  ],
+  automergeType: "branch",
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "demos/**"
+  ]
+}
