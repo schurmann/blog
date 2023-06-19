@@ -53,9 +53,7 @@ export default defineConfig({
         }),
         sitemap(),
         tailwind({
-            config: {
-                applyBaseStyles: false
-            }
+            applyBaseStyles: false
         })],
     output: "static",
     vite: {
