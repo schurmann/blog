@@ -25,9 +25,6 @@ const AnchorLinkIcon = h(
 
 export default defineConfig({
     site: 'https://schurmann.dev',
-    experimental: {
-        assets: true
-    },
     integrations: [
         mdx({
             remarkPlugins: [remarkToc],
