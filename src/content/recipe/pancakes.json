@@ -1,0 +1,73 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Recipe",
+  "name": "Pancakes",
+  "image": [
+    "https://lagahemma.se/bilder/pannkakor.jpg"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Jonathan Schurmann"
+  },
+  "datePublished": "2023-08-07",
+  "description": "This coffee cake is awesome and perfect for parties.",
+  "cookTime": "PT30M",
+  "keywords": "cake for a party, coffee",
+  "recipeYield": "10",
+  "recipeCategory": "Dessert",
+  "recipeCuisine": "Swedish",
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": "270 calories"
+  },
+  "recipeIngredient": [
+    "4 dl flour",
+    "4 eggs",
+    "8 dl milk",
+    "1 teaspoon salt"
+  ],
+  "recipeInstructions": [
+    {
+      "@type": "HowToStep",
+      "name": "Preheat",
+      "text": "Preheat the oven to 350 degrees F. Grease and flour a 9x9 inch pan.",
+      "url": "https://example.com/party-coffee-cake#step1",
+      "image": "https://example.com/photos/party-coffee-cake/step1.jpg"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Mix dry ingredients",
+      "text": "In a large bowl, combine flour, sugar, baking powder, and salt.",
+      "url": "https://example.com/party-coffee-cake#step2",
+      "image": "https://example.com/photos/party-coffee-cake/step2.jpg"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Add wet ingredients",
+      "text": "Mix in the butter, eggs, and milk.",
+      "url": "https://example.com/party-coffee-cake#step3",
+      "image": "https://example.com/photos/party-coffee-cake/step3.jpg"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Spread into pan",
+      "text": "Spread into the prepared pan.",
+      "url": "https://example.com/party-coffee-cake#step4",
+      "image": "https://example.com/photos/party-coffee-cake/step4.jpg"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Bake",
+      "text": "Bake for 30 to 35 minutes, or until firm.",
+      "url": "https://example.com/party-coffee-cake#step5",
+      "image": "https://example.com/photos/party-coffee-cake/step5.jpg"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Enjoy",
+      "text": "Allow to cool and enjoy.",
+      "url": "https://example.com/party-coffee-cake#step6",
+      "image": "https://example.com/photos/party-coffee-cake/step6.jpg"
+    }
+  ]
+}

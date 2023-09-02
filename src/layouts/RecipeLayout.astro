@@ -1,0 +1,43 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import {Image} from 'astro:assets';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import MainLayout from "./MainLayout.astro";
+
+export interface Props {
+    content: {
+        title: string;
+        pubDate: string;
+        updatedDate?: string;
+        heroImage?: string;
+    };
+}
+
+const {
+    frontmatter: {title, pubDate, updatedDate, cover, coverAlt},
+} = Astro.props;
+---
+
+<MainLayout>
+    <main>
+        <article>
+            <Image src={cover} alt={coverAlt} height="600"/>
+            <h1 class="text-4xl my-1">{title}</h1>
+            {pubDate &&
+                    <time>{pubDate.toLocaleDateString()}</time>}
+            {updatedDate &&
+                    <div>Last updated on
+                        <time>{updatedDate}</time>
+                    </div>}
+            <hr class="border-t-2"/>
+            <slot/>
+        </article>
+    </main>
+</MainLayout>
+
+<style is:global>
+    .anchor svg {
+        @apply inline ml-2 content-center mb-1;
+    }
+</style>
