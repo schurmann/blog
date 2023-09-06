@@ -5,11 +5,12 @@ import HeaderLink from "./HeaderLink.astro";
 <header class="mb-8">
     <nav class="flex justify-between">
         <div>
-            <HeaderLink href="/">Home</HeaderLink>
-            <HeaderLink href="/blog">Blog</HeaderLink>
+            <HeaderLink class="py-3" href="/">Home</HeaderLink>
+            <HeaderLink class="py-3" href="/blog">Blog</HeaderLink>
         </div>
         <div>
             <HeaderLink
+                    class="py-3"
                     href="https://github.com/schurmann/blog"
                     target="_blank"
                     rel="noopener"
@@ -26,9 +27,9 @@ import HeaderLink from "./HeaderLink.astro";
                     ></path>
                 </svg>
                 GitHub
-            </HeaderLink
-            >
+            </HeaderLink>
             <HeaderLink
+                    class="py-3"
                     href="https://www.linkedin.com/in/jonathan-schurmann"
                     target="_blank"
                     rel="noopener"
