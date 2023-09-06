@@ -1,25 +1,15 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import {SITE_TITLE, SITE_DESCRIPTION} from '../config';
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
-</head>
-<body>
-<Header title={SITE_TITLE}/>
-<main>
-    <h1>Hello, I'm Jonathan!</h1>
-    <p>
-        I'm a software engineer based in Sweden, with a passion for working across the stack. Currently, my focus lies
-        in cloud-native technologies. I've created this website as a personal platform to
-        document my learnings and accomplishments. Feel to to check out my <a href="/blog">blog</a>!
-    </p>
-</main>
-<Footer/>
-</body>
-</html>
+<MainLayout>
+    <main>
+        <h1>Hello, I'm Jonathan!</h1>
+        <p>
+            I'm a software engineer based in Sweden, with a passion for working across the stack. Currently, my focus
+            lies
+            in cloud-native technologies. I've created this website as a personal platform to
+            document my learnings and accomplishments. Feel to to check out my <a href="/blog">blog</a>!
+        </p>
+    </main>
+</MainLayout>

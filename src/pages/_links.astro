@@ -1,22 +1,12 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    </head>
-    <body>
-        <Header />
-        <main>
-            <ul>
-                <li>https://sharats.me/posts/shell-script-best-practices/</li>
-            </ul>
-        </main>
-        <Footer />
-    </body>
-</html>
+<MainLayout>
+    <main>
+        <ul>
+            <li>https://sharats.me/posts/shell-script-best-practices/</li>
+        </ul>
+    </main>
+</MainLayout>
