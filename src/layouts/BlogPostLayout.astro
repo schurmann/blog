@@ -1,39 +1,27 @@
 ---
 import MainLayout from "./MainLayout.astro";
-
-export interface Props {
-    content: {
-        title: string;
-        description: string;
-        pubDate: string;
-        updatedDate?: string;
-        heroImage?: string;
-    };
+import {type Blog} from "../content/config";
+interface Props {
+    content: Blog
 }
 
-const {
-    frontmatter: {title, description, pubDate, updatedDate, heroImage},
-} = Astro.props;
+const {content} = Astro.props;
 ---
 
 <MainLayout>
     <main>
         <article>
-            {heroImage && (
+            {content.heroImage && (
                     <img
                             width={720}
                             height={360}
-                            src={heroImage}
+                            src={content.heroImage}
                             alt=""
                     />
             )}
-            <h1 class="text-4xl my-1">{title}</h1>
-            {pubDate &&
-                    <time>{pubDate.toLocaleDateString()}</time>}
-            {updatedDate &&
-                    <div>Last updated on
-                        <time>{updatedDate}</time>
-                    </div>}
+            <h1 class="text-4xl my-1">{content.title}</h1>
+            {content.pubDate &&
+                    <time>{content.pubDate.toLocaleDateString()}</time>}
             <hr class="border-t-2"/>
             <slot/>
         </article>
