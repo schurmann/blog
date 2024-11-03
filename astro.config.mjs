@@ -4,7 +4,6 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from "@astrojs/tailwind";
 import {h} from 'hastscript'
 
-import netlify from "@astrojs/netlify/functions";
 import remarkToc from "remark-toc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
@@ -34,7 +33,7 @@ export default defineConfig({
                     rehypeAutolinkHeadings,
                     {
                         behavior: 'append',
-                        content: (node) => [
+                        content: () => [
                             h(
                                 `span`,
                                 {

@@ -4,7 +4,6 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import {SITE_TITLE, SITE_DESCRIPTION} from '../../config';
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
 import {getCollection} from 'astro:content';
 const posts = await getCollection('blog');
 ---
@@ -18,18 +17,22 @@ const posts = await getCollection('blog');
 <main>
     <section>
         <ul class="p-0">
-            {posts.map((post) => (
-                    <li class="flex">
-                        <time class="basis-32 italic text-gray-500" datetime={post.data.pubDate}>
-                            {post.data.pubDate.toLocaleDateString(undefined, {
-                                year: 'numeric',
-                                month: 'short',
-                                day: 'numeric',
-                            })}
-                        </time>
-                        <a class="visited:text-purple-600" href={`/blog/${post.slug}`}>{post.data.title}</a>
-                    </li>
-            ))}
+            {posts.map((post) => {
+                    return (
+                            <li class="flex">
+                                <time class="basis-32 italic text-gray-500"
+                                      datetime={post.data.pubDate.toDateString()}>
+                                    {post.data.pubDate.toLocaleDateString(undefined, {
+                                        year: 'numeric',
+                                        month: 'short',
+                                        day: 'numeric',
+                                    })}
+                                </time>
+                                <a class="visited:text-purple-600" href={`/blog/${post.id}`}>{post.data.title}</a>
+                            </li>
+                    )
+                }
+            )}
         </ul>
     </section>
 </main>
