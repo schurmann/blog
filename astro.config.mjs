@@ -1,7 +1,7 @@
 import {defineConfig} from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import {h} from 'hastscript'
 
 import remarkToc from "remark-toc";
@@ -48,11 +48,10 @@ export default defineConfig({
             ],
         }),
         sitemap(),
-        tailwind({
-            applyBaseStyles: false
-        })],
+    ],
     output: "static",
     vite: {
+        plugins: [tailwindcss()],
         server: {
             watch: {
                 ignored: ['demos/**']
