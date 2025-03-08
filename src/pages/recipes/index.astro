@@ -1,0 +1,23 @@
+---
+import {getCollection} from 'astro:content';
+import MainLayout from "../../layouts/MainLayout.astro";
+const recipes = await getCollection('recipe');
+---
+<MainLayout title="Recipes">
+    <main>
+        <section>
+            <ul class="p-0">
+                {recipes.toSorted((a, b) => a.data.metadata.title.localeCompare(b.data.metadata.title))
+                    .map((recipe) => {
+                            return (
+                                    <li class="flex">
+                                        <a class="visited:text-purple-600"
+                                           href={`/recipes/${recipe.id}`}>{recipe.data.metadata.title}</a>
+                                    </li>
+                            )
+                        }
+                    )}
+            </ul>
+        </section>
+    </main>
+</MainLayout>

@@ -8,7 +8,7 @@ interface Props {
 const {content} = Astro.props;
 ---
 
-<MainLayout>
+<MainLayout title={content.title}>
     <main>
         <article>
             {content.heroImage && (

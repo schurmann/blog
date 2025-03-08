@@ -1,41 +1,29 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import {SITE_TITLE, SITE_DESCRIPTION} from '../../config';
-
 import {getCollection} from 'astro:content';
+import MainLayout from "../../layouts/MainLayout.astro";
 const posts = await getCollection('blog');
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
-</head>
-<body>
-<Header/>
-<main>
-    <section>
-        <ul class="p-0">
-            {posts.map((post) => {
-                    return (
-                            <li class="flex">
-                                <time class="basis-32 italic text-gray-500"
-                                      datetime={post.data.pubDate.toDateString()}>
-                                    {post.data.pubDate.toLocaleDateString(undefined, {
-                                        year: 'numeric',
-                                        month: 'short',
-                                        day: 'numeric',
-                                    })}
-                                </time>
-                                <a class="visited:text-purple-600" href={`/blog/${post.id}`}>{post.data.title}</a>
-                            </li>
-                    )
-                }
-            )}
-        </ul>
-    </section>
-</main>
-<Footer/>
-</body>
-</html>
+<MainLayout title="Blog">
+    <main>
+        <section>
+            <ul class="p-0">
+                {posts.map((post) => {
+                        return (
+                                <li class="flex">
+                                    <time class="basis-32 italic text-gray-500"
+                                          datetime={post.data.pubDate.toDateString()}>
+                                        {post.data.pubDate.toLocaleDateString(undefined, {
+                                            year: 'numeric',
+                                            month: 'short',
+                                            day: 'numeric',
+                                        })}
+                                    </time>
+                                    <a class="visited:text-purple-600" href={`/blog/${post.id}`}>{post.data.title}</a>
+                                </li>
+                        )
+                    }
+                )}
+            </ul>
+        </section>
+    </main>
+</MainLayout>

@@ -4,7 +4,6 @@ import '../styles/global.css';
 export interface Props {
     title: string;
     description: string;
-    image?: string;
 }
 
 const {title, description} = Astro.props;
@@ -16,5 +15,6 @@ const {title, description} = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title}/>
 <meta name="description" content={description}/>
-<script is:inline src="https://beamanalytics.b-cdn.net/beam.min.js" data-token="7654eec8-ca2c-4d8d-9981-190f904feb5d" async></script>
+<script is:inline src="https://beamanalytics.b-cdn.net/beam.min.js" data-token="7654eec8-ca2c-4d8d-9981-190f904feb5d"
+        async/>
 <link rel="sitemap" href="/sitemap-index.xml">
