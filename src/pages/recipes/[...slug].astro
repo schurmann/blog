@@ -40,6 +40,13 @@ const recipe = entry.data as Recipe
                 )}
             </div>
 
+            {recipe.metadata.notes && (
+                    <div class="mb-6 bg-yellow-50 p-4 rounded border border-yellow-200">
+                        <h2 class="not-prose text-lg font-bold mb-2">Notes</h2>
+                        <p class="text-gray-800">{recipe.metadata.notes}</p>
+                    </div>
+            )}
+
             <hr class="border-t-2 mb-6"/>
 
             <div class="grid md:grid-cols-3 gap-8">
@@ -47,9 +54,9 @@ const recipe = entry.data as Recipe
                     <h2 class="text-xl font-bold mb-4">Ingredients</h2>
                     <ul class="space-y-2">
                         {recipe.ingredients.map((ingredient) => (
-                                <li class="flex">
-                                    <span class="font-medium">{ingredient.quantity} {ingredient.units}</span>
-                                    <span class="ml-2">{ingredient.name}</span>
+                                <li class="flex items-start">
+                                    <span class="font-medium whitespace-nowrap mr-2">{ingredient.quantity} {ingredient.units}</span>
+                                    <span>{ingredient.name}</span>
                                 </li>
                         ))}
                     </ul>
