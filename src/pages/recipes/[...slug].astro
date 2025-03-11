@@ -1,7 +1,9 @@
 ---
 import {getCollection} from 'astro:content';
+import {Picture} from 'astro:assets';
 import MainLayout from "../../layouts/MainLayout.astro";
 import {type Recipe} from "../../loader/cooklang/schema";
+import {type UnresolvedImageTransform} from "astro";
 export async function getStaticPaths() {
     const entries = await getCollection('recipe');
     return entries.map(entry => ({
@@ -11,11 +13,23 @@ export async function getStaticPaths() {
 }
 const {entry} = Astro.props;
 const recipe = entry.data as Recipe
+let cover: UnresolvedImageTransform | null = null;
+try {
+    cover = await import(`../../assets/recipes/${entry.id}.webp`);
+} catch (e) {
+    console.warn(`No cover image found for ${entry.id}`);
+}
+const title = recipe.metadata.title || "Untitled Recipe";
 ---
 <MainLayout title={recipe.metadata.title}>
+    {cover && (
+            <div class="mb-6">
+                <Picture src={cover.default} alt={`Cover image for ${title}`}/>
+            </div>
+    )}
     <main class="max-w-3xl mx-auto px-4 py-8">
         <article>
-            <h1 class="text-3xl font-bold mb-4">{recipe.metadata.title || "Untitled Recipe"}</h1>
+            <h1 class="text-3xl font-bold mb-4">{title}</h1>
 
             {recipe.metadata.description && (
                     <p class="text-gray-700 mb-6">{recipe.metadata.description}</p>
