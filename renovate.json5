@@ -3,8 +3,10 @@
   "extends": [
     "config:base"
   ],
+  "schedule": ["before 4am on monday"],
   "packageRules": [
-    { // leave major dependency updates to a human
+    {
+      "groupName": "all non-major dependencies",
       "matchUpdateTypes": [
         "minor",
         "patch",
