@@ -2,10 +2,14 @@
 
 @plugin "@tailwindcss/typography";
 
+@theme inline {
+    --font-sans: var(--font-inter);
+}
+
 @layer utilities {
     body {
         @apply prose mx-auto leading-6 p-8;
-        font-family: Verdana, sans-serif;
+        font-family: var(--font-inter), sans-serif;
     }
 
     code {

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import {Font} from 'astro:assets';
 
 export interface Props {
     title: string;
@@ -9,12 +10,12 @@ export interface Props {
 const {title, description} = Astro.props;
 ---
 
+<Font cssVariable="--font-inter" preload />
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <meta name="generator" content={Astro.generator}/>
 <title>{title}</title>
 <meta name="title" content={title}/>
 <meta name="description" content={description}/>
-<script is:inline src="https://beamanalytics.b-cdn.net/beam.min.js" data-token="7654eec8-ca2c-4d8d-9981-190f904feb5d"
-        async/>
 <link rel="sitemap" href="/sitemap-index.xml">
+<link rel="stylesheet" href="/prism-one-dark.css">

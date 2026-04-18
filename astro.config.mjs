@@ -1,4 +1,4 @@
-import {defineConfig} from 'astro/config';
+import {defineConfig, fontProviders} from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from "@tailwindcss/vite";
@@ -24,6 +24,37 @@ const AnchorLinkIcon = h(
 
 export default defineConfig({
     site: 'https://schurmann.dev',
+    fonts: [
+        {
+            provider: fontProviders.google(),
+            name: 'Inter',
+            cssVariable: '--font-inter',
+            weights: [400, 500, 700],
+            styles: ['normal'],
+            subsets: ['latin'],
+        },
+    ],
+    security: {
+        csp: {
+            directives: [
+                "default-src 'none'",
+                "img-src 'self'",
+                "font-src 'self'",
+                "upgrade-insecure-requests",
+                "form-action 'none'",
+                "base-uri 'none'",
+            ],
+            scriptDirective: {
+                resources: ["'self'"],
+            },
+            styleDirective: {
+                resources: ["'self'"],
+            },
+        },
+    },
+    markdown: {
+        syntaxHighlight: 'prism',
+    },
     integrations: [
         mdx({
             remarkPlugins: [remarkToc],
