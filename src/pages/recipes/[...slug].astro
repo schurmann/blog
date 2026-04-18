@@ -20,6 +20,7 @@ try {
     console.warn(`No cover image found for ${entry.id}`);
 }
 const title = recipe.metadata.title || "Untitled Recipe";
+let stepNumber = 0;
 ---
 <MainLayout title={recipe.metadata.title}>
     {cover && (
@@ -69,8 +70,8 @@ const title = recipe.metadata.title || "Untitled Recipe";
                     <ul class="space-y-2">
                         {recipe.ingredients.map((ingredient) => (
                                 <li class="flex items-start">
-                                    <span class="font-medium whitespace-nowrap mr-2">{ingredient.quantity} {ingredient.units}</span>
-                                    <span>{ingredient.name}</span>
+                                    <span class="font-medium whitespace-nowrap mr-2">{ingredient.quantity}</span>
+                                    <span>{ingredient.name}{ingredient.note && ` (${ingredient.note})`}</span>
                                 </li>
                         ))}
                     </ul>
@@ -79,47 +80,38 @@ const title = recipe.metadata.title || "Untitled Recipe";
                 <div class="md:col-span-2">
                     <h2 class="text-xl font-bold mb-4">Instructions</h2>
                     <ol class="space-y-6">
-                        {recipe.steps.map((step, index) => (
-                                <li class="flex">
-                                    <span class="font-bold mr-2">{index + 1}.</span>
-                                    <div>
-                                        {step.map((item) => {
-                                            if (item.type === "text") {
-                                                return <span>{item.value} </span>
-                                            } else if (item.type === "ingredient") {
-                                                return <span class="font-semibold text-green-700">{item.name} </span>
-                                            } else if (item.type === "cookware") {
-                                                return <span>{item.name} </span>
-                                            } else if (item.type === "timer") {
-                                                return <span
-                                                        class="font-semibold text-red-700">{item.quantity} {item.units} {item.name && `(${item.name})`} </span>
-                                            }
-                                            return null;
-                                        })}
-                                    </div>
-                                </li>
+                        {recipe.sections.map((section) => (
+                                <>
+                                    {section.name && (
+                                            <li class="font-bold text-lg list-none -ml-4">{section.name}</li>
+                                    )}
+                                    {section.steps.map((step) => {
+                                        stepNumber++;
+                                        return (
+                                                <li class="flex">
+                                                    <span class="font-bold mr-2">{stepNumber}.</span>
+                                                    <div>
+                                                        {step.items.map((item) => {
+                                                            if (item.type === "text") {
+                                                                return <span>{item.value} </span>
+                                                            } else if (item.type === "ingredient") {
+                                                                return <span class="font-semibold text-green-700">{item.name} </span>
+                                                            } else if (item.type === "cookware") {
+                                                                return <span>{item.name} </span>
+                                                            } else if (item.type === "timer") {
+                                                                return <span class="font-semibold text-red-700">{item.quantity} {item.name && `(${item.name})`} </span>
+                                                            }
+                                                            return null;
+                                                        })}
+                                                    </div>
+                                                </li>
+                                        );
+                                    })}
+                                </>
                         ))}
                     </ol>
                 </div>
             </div>
-
-            {Object.keys(recipe.shoppingList).length > 0 && (
-                    <div class="mt-12">
-                        <h2 class="text-xl font-bold mb-4">Shopping List</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {Object.entries(recipe.shoppingList).map(([category, items]) => (
-                                    <div class="bg-gray-50 p-4 rounded">
-                                        <h3 class="font-bold mb-2">{category}</h3>
-                                        <ul>
-                                            {items.map((item) => (
-                                                    <li>{item.name}{item.synonym && ` (${item.synonym})`}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                            ))}
-                        </div>
-                    </div>
-            )}
         </article>
     </main>
 </MainLayout>
